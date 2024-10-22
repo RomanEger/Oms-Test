@@ -1,0 +1,30 @@
+﻿@model TestTask.Models.User
+
+@using(Html.BeginForm("ChangeUser", "Home", FormMethod.Post))
+{
+    @Html.Hidden("Id", Model?.Id.ToString())
+    <label>Фамилия</label><br/>
+    @Html.TextBox("LastName", Model?.LastName)<br/>
+    <label>Имя</label><br/>
+    @Html.TextBox("FirstName", Model?.FirstName)<br/>
+    <label>Отчество</label><br/>
+    @Html.TextBox("Patronymic", Model?.Patronymic)<br/>
+    <input type="submit" class="btn-primary rounded"/>
+}
+
+<style>
+    form {
+        margin: 1rem;
+        text-align: center;
+    }
+
+    input {
+        color: #000000;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    
+    .rounded {
+        border-radius: .7rem;
+    }
+</style>
