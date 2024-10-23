@@ -30,17 +30,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
 
 <script>
+    const onContextMenu = document.oncontextmenu
+
     $(document).ready(function() {
         console.log('document is ready')
-        document.oncontextmenu = function() {return false;};
                 
         $(document).mousedown(function (e) {
-            if (e.target.className != 'tr-body' && e.target.parentElement?.className != 'tr-body'){
+            if (e.target.className != 'tr-body' && e.target.parentElement?.className != 'tr-body'
+                && e.target.parentElement?.parentElement?.parentElement?.className != 'context-menu'){
                 $('.context-menu').remove();
+                document.oncontextmenu = onContextMenu
             }
         })
         
         $('.tr-body').mousedown(function(event) {  
+            document.oncontextmenu = function() {return false;};
             
             let userId = $(this).closest(".tr-body")   
                                    .find(".userId")     
